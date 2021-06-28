@@ -1,0 +1,43 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CharacterChanger : MonoBehaviour
+{
+
+    [SerializeField] GameObject char0;
+    [SerializeField] GameObject char1;
+    [SerializeField] GameObject char2;
+
+    GameObject currentChar;
+ 
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentChar = Instantiate<GameObject>(char0, Vector3.zero, Quaternion.identity);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 position = currentChar.transform.position;
+            Destroy(currentChar);
+
+            int charNumber = Random.Range(0, 3);
+            if(charNumber == 0)
+            {
+                currentChar = Instantiate(char0, position, Quaternion.identity);
+            }
+            if (charNumber == 1)
+            {
+                currentChar = Instantiate(char1, position, Quaternion.identity);
+            }
+            else
+            {
+                currentChar = Instantiate(char2, position, Quaternion.identity);
+            }
+        }
+    }
+}
