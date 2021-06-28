@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Movements : MonoBehaviour
+{
+
+    const float movementUnitPerSecond = 5f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 position = transform.position;
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        float verticalInput = Input.GetAxis("Vertical");
+
+        if (horizontalInput != 0)
+        {
+            position.x += horizontalInput * movementUnitPerSecond * Time.deltaTime;
+        }
+
+        if (verticalInput != 0)
+        {
+            position.y += verticalInput * movementUnitPerSecond * Time.deltaTime;
+        }
+
+
+        transform.position = position;
+        
+    }
+}
